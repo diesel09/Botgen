@@ -13,7 +13,7 @@ echo "$IP" > /usr/bin/vendor_code
 }
 
 function_verify () {
-  permited=$(curl -sSL "https://raw.githubusercontent.com/scriptsmx/script/master/generadores/control/Control-Bot")
+  permited=$(curl -sSL "https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/control/Control-Bot")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
   clear
   echo -e "\n\n\n\e[31m====================================================="
