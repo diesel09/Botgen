@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NjcmlwdHNteC9zY3JpcHQvbWFzdGVyL2dlbmVyYWRvcmVzL3JlcG9z"
+SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RpZXNlbDA5L0JvdGdlbi9tYXN0ZXIvZ2VuZXJhZG9yZXMvcmVwb3M="
 SUB_DOM='base64 -d'
 bar="\e[0;36m=====================================================\e[0m"
 wget -O /bin/ShellBot.sh https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/ShellBot.sh &> /dev/null
@@ -13,7 +13,7 @@ echo "$IP" > /usr/bin/vendor_code
 }
 
 function_verify () {
-  permited=$(curl -sSL "https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/control/Control-Bot")
+  permited=$(curl -sSL "https://raw.githubusercontent.com/diesel09/vpsbot/main/TeleBotGen/Control/Control-Bot")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
   clear
   echo -e "\n\n\n\e[31m====================================================="
