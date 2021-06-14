@@ -21,13 +21,21 @@ valuekey+="$(echo $(($RANDOM*10))|head -c 5)"
 fun_list "$valuekey"
 keyfinal=$(ofus "$IP:8888/$valuekey/$LIST")
 local bot_retorno="$LINE\n"
-bot_retorno+="Key Generada Con Exito!\n"
+
+bot_retorno+="    ✅ Key Exitosa! $(printf '%(%D-%H:%M:%S)T') ✅\n ⚠️ Autodestruccion 24 horas ⚠️\n"
 bot_retorno+="$LINE\n"
-bot_retorno+="${keyfinal}\n"
+bot_retorno+="  ⚠️ Script Admin Vps ⚠️ \n   🚫 Sin TU RESELLER EN LA KEY 🚫\n"
+bot_retorno+=" 🛡️ Reseller actual 🛡️ : $nomkey\n"
 bot_retorno+="$LINE\n"
-bot_retorno+="sudo apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/scriptsmx/mxvps/master/vps-mx-free/instalscript.sh; chmod 777 instalscript.sh; ./instalscript.sh\n"
+bot_retorno+=" 💥 ${keyfinal} 💥\n"
 bot_retorno+="$LINE\n"
-bot_retorno+="Esta key se autodestruira en 6hs\npasado este tiempo deve generar una nueva key.\n"
+bot_retorno+="  🛡️  Suscribete al canal de YT  🛡️ \n"
+bot_retorno+="$LINE\n"
+bot_retorno+="apt update -y; apt upgrade -y; wget https://raw.githubusercontent.com/AizenNetFreeMx/adminVps1.5/main/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*\n"
+bot_retorno+="$LINE\n"
+bot_retorno+=" 🧬 Soporte : Ubuntu 14.04 - 16.04 - 18.04 - 20.04\n     SO Recomendado: Ubuntu 18.04 \n  🪦 Solicita Creditos de tu KEY 🛡️⚔️\n"
+bot_retorno+=" 🔐 『 $numkey_used 』keys Usadas 🔓,『 $numkey_gen 』keys Generadas 🗝️ \n"
+
 bot_retorno+="$LINE\n"
 msj_fun
 echo -e $bot_retorno >> ${keytxt}/key_${chatuser}.txt
@@ -64,7 +72,7 @@ done
 rm ${SCPT_DIR}/*.x.c &> /dev/null
 echo "$nombrevalue" > ${DIR}/${KEY}.name
 [[ ! -z $IPFIX ]] && echo "$IPFIX" > ${DIR}/${KEY}/keyfixa
-at now +6 hours <<< "rm -rf ${DIR}/${KEY} && rm -rf ${DIR}/${KEY}.name"
+at now +24 hours <<< "rm -rf ${DIR}/${KEY} && rm -rf ${DIR}/${KEY}.name"
 }
 
 ofus () {
