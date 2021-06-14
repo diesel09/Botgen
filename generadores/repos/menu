@@ -13,7 +13,7 @@ bot_retorno="=========COMANDOS=========\n"
 			 bot_retorno+="$LINE\n"
 			 msj_fun
 		 else
-		 	[[ -e /etc/menu_ito ]] && nomkey="$(cat /etc/menu_ito)" || nomkey="$(curl -sSL "https://www.dropbox.com/s/z38hj1mz3q9krso/menu_credito")"
+		 	[[ -e /etc/menu_ito ]] && nomkey="$(cat /etc/menu_ito)" || nomkey="$(curl -sSL "https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/repos/credito")"
 		 	 bot_retorno+="$LINE\n"
 			 bot_retorno+="  ⚠️ SE HA LIBERADO TU ACCESO ILIMITADO ⚠️ \n  😀 FELICIDADES POR SUSCRIBIRTE 😀"
 			 bot_retorno+="$LINE\n"
