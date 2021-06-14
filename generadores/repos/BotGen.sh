@@ -91,10 +91,12 @@ upfile_fun () {
 }
 
 invalido_fun () {
-local bot_retorno="$LINE\n"
-         bot_retorno+="Comando invalido!\n"
+[[ ! -z ${callback_query_message_chat_id[$id]} ]] && var=${callback_query_message_chat_id[$id]} || var=${message_chat_id[$id]}
+local bot_retorno="  🎊 Bienvenido al bot de keys  🎊\n"
+	 bot_retorno+="$LINE\n"
+         bot_retorno+="𝙲𝚘𝚖𝚊𝚗𝚍𝚘 𝙸𝚗𝚟𝚊𝚕𝚒𝚍𝚘!! 𝚃𝚎𝚌𝚕𝚎𝚊 /𝚊𝚢𝚞𝚍𝚊 𝚙𝚊𝚛𝚊 𝙲𝚘𝚗𝚘𝚌𝚎𝚛 𝚕𝚘𝚜 𝙿𝚊𝚜𝚘𝚜! \n O Contacta a $(cat < /etc/ADM-db/resell) \n"
          bot_retorno+="$LINE\n"
-	     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+	     ShellBot.sendMessage --chat_id $var \
 							--text "<i>$(echo -e $bot_retorno)</i>" \
 							--parse_mode html
 	return 0	
@@ -113,6 +115,24 @@ reply () {
 							--reply_markup "$(ShellBot.ForceReply)"
 }
 
+
+botao_conf=''
+botao_user=''
+botao_donar=''
+
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 1 --text 'Añadir' --callback_data '/add'
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 1 --text 'Del' --callback_data '/del'
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 1 --text 'List' --callback_data '/list'
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 1 --text 'ID' --callback_data '/ID'
+
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 2 --text 'ON/OFF' --callback_data '/power'
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 2 --text 'MENU' --callback_data '/menu'
+
+ShellBot.InlineKeyboardButton --button 'botao_conf' --line 3 --text 'GENERAR KEY' --callback_data '/keygen'
+ShellBot.InlineKeyboardButton --button 'botao_user' --line 1 --text 'GENERAR KEY' --callback_data '/keygen'
+
+ShellBot.InlineKeyboardButton --button 'botao_donar' --line 1 --text 'Donar Paypal' --callback_data '1' --url 'https://www.paypal.me/'
+ShellBot.InlineKeyboardButton --button 'botao_donar' --line 3 --text 'ACCEDER WHATSAPP' --callback_data '1' --url 'https://wa.me/529842147259'
 # Ejecutando escucha del bot
 while true; do
     ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
