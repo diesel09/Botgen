@@ -4,37 +4,45 @@ menu_src () {
 bot_retorno="=========COMANDOS=========\n"
 	 if [[ $(echo $permited|grep "${chatuser}") = "" ]]; then
 		 if [[ $(cat ${CID}|grep "${chatuser}") = "" ]]; then
-			 bot_retorno+="/ID (muestra sus ID)\n"
-			 bot_retorno+="/menu (muestra este menu)\n"
-			 bot_retorno+="/ayuda (muestra ayuda de los comandos)\n"
 			 bot_retorno+="$LINE\n"
+			 bot_retorno+="  ⚠️ BIENVENIDO - SCRIPT ADMIN VPS ⚠️ \n  🚫 No tiene acceso al generador 🚫"
+			 bot_retorno+="$LINE\n"
+			 bot_retorno+="/ID    | Muestra sus ID |\n"
+			 bot_retorno+="/menu  | MENU DE COMANDOS |\n"
+			 bot_retorno+="/ayuda | INSTRUCCIONES DE COMANDOS |\n"
+			 bot_retorno+="$LINE\n"
+			 msj_fun
 		 else
-			 bot_retorno+="/ID (muestra sus ID)\n"
-			 bot_retorno+="/Keygen (genera una key)\n"
-			 bot_retorno+="/instal (link de instalacion)\n"
-			 bot_retorno+="/menu (muestra este menu)\n"
-			 bot_retorno+="/ayuda (muestra ayuda de los comandos)\n"
+		 	[[ -e /etc/menu_ito ]] && nomkey="$(cat /etc/menu_ito)" || nomkey="$(curl -sSL "https://www.dropbox.com/s/z38hj1mz3q9krso/menu_credito")"
+		 	 bot_retorno+="$LINE\n"
+			 bot_retorno+="  ⚠️ SE HA LIBERADO TU ACCESO ILIMITADO ⚠️ \n  😀 FELICIDADES POR SUSCRIBIRTE 😀"
 			 bot_retorno+="$LINE\n"
+			 bot_retorno+="Reseller Actual: $nomkey\n"
+			 bot_retorno+="$LINE\n"
+			 bot_retorno+="/ID     | Muestra su ID |\n"
+			 bot_retorno+="/instal | INSTALADOR OFICIAL |\n"
+			 bot_retorno+="/menu   | MENU DE COMANDOS | \n"
+			 bot_retorno+="/ayuda  | INSTRUCCIONES DE COMANDOS |\n"
+			 bot_retorno+="/keygen  | Presiona él botón para generar la key |\n"
+			 
+			 bot_retorno+="$LINE\n"
+			 menu_print
 		 fi
 	 else
 		 unset PID_GEN
 		 PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
-		 [[ ! $PID_GEN ]] && PID_GEN=❌ || PID_GEN=✅
+		  [[ ! $PID_GEN ]] && PID_GEN='(Offline) ❌' || PID_GEN='(Online) ✅'
 		 
-		 bot_retorno+="/infosys (informacion del sistema)\n"
-		 bot_retorno+="/ID (muestra sus ID)\n"
-		 bot_retorno+="/add [id](añadir nuevas ID)\n"
-		 bot_retorno+="/del [id](quitar un ID)\n"
-		 bot_retorno+="/list (lista de ID permitidas)\n"
-		 bot_retorno+="/Keygen (genera una key)\n"
-		 bot_retorno+="/instal (link de instalacion)\n"
-		 bot_retorno+="/power (online/offline) $PID_GEN\n"
-		 bot_retorno+="/menu (muestra este menu)\n"
-		 bot_retorno+="/ayuda (muestra ayuda de los comandos)\n"
-		 bot_retorno+="/cache (Limpiar cache Ram)\n"
-		 bot_retorno+="/update (actualiza el BotGen)\n"
-		 bot_retorno+="/reboot (Reinicia el servidor vps)\n"
 		 bot_retorno+="$LINE\n"
+		 bot_retorno+="/infosys | INFORMACION DE SERVIDOR |\n"
+		 bot_retorno+="/list | MUESTRA LISTA DE ID PERMITIDOS\n"
+		 bot_retorno+="/instal | INSTALADOR OFICIAL |\n"
+		 bot_retorno+="/menu | MENU DE ACCIONES |\n"
+		 bot_retorno+="/ayuda | INSTRUCCIONES DE COMANDOS |\n"
+		 bot_retorno+="/cache | OPTIMIZA SERVIDOR |\n"
+		 bot_retorno+="/update | ACTUALIZA BOT |\n"
+		 bot_retorno+="/reboot | REINICIA SERVIDOR VPS |\n"
+		 bot_retorno+="$LINE\n"
+		 menu_print
 	 fi	
-msj_fun
 }
