@@ -96,8 +96,30 @@ unset PIDGEN
 PIDGEN=$(ps aux|grep -v grep|grep "BotGen.sh")
 if [[ ! $PIDGEN ]]; then
 screen -dmS teleBotGen ${CIDdir}/BotGen.sh
+clear
+echo -e "$bar"
+echo -e "\033[1;32m                BotGen en linea"
+echo -e "$bar"
+echo -ne "\033[1;97m Poner en linea despues de un reinicio [s/n]: "
+read bot_ini
+echo -e "$bar"
+[[ $bot_ini = @(s|S|y|Y) ]] && {
+	crontab -l > /root/cron
+	echo "@reboot screen -dmS teleBotGen ${CIDdir}/BotGen.sh" >> /root/cron
+	crontab /root/cron
+	rm /root/cron
+}
 else
 killall BotGen.sh
+crontab -l > /root/cron
+sed -i '/BotGen.sh/ d' /root/cron
+crontab /root/cron
+rm /root/cron
+clear
+msg -bar
+echo -e "\033[1;31m            BotGen fuera de linea"
+msg -bar
+sleep 3
 fi
 bot_gen
 }
@@ -139,7 +161,7 @@ PID_GEN=$(ps x|grep -v grep|grep "BotGen.sh")
 
 CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
 echo -e "$bar"
-echo -e "     \e[47m \e[30m>>>>>>  BotGen by \e[1;36mRufu99\e[0m\e[47m \e[30m<<<<<< \e[0m"
+echo -e "     \e[47m \e[30m>>>>>>  BotGen by \e[1;36mFelipecouoh\e[0m\e[47m \e[30m<<<<<< \e[0m"
 echo -e "$bar"
 echo -e "\033[1;32m[1] \033[1;36m> \033[1;37mTOKEN DEL BOT"
 echo -e "\033[1;32m[2] \033[1;36m> \033[1;37mINICIAR/PARAR BOT $PID_GEN\033[0m"
