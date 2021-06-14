@@ -13,7 +13,6 @@ INSTA_ARQUIVOS="ADMVPS.zip"
 DIR="/etc/http-shell"
 LIST="spVnimdA"
 #LIST="lista-arq"
-
 gerar_key () {
 meu_ip_fun
 valuekey="$(date | md5sum | head -c10)"
@@ -21,7 +20,6 @@ valuekey+="$(echo $(($RANDOM*10))|head -c 5)"
 fun_list "$valuekey"
 keyfinal=$(ofus "$IP:8888/$valuekey/$LIST")
 local bot_retorno="$LINE\n"
-
 bot_retorno+="    ✅ Key Exitosa! $(printf '%(%D-%H:%M:%S)T') ✅\n ⚠️ Autodestruccion 24 horas ⚠️\n"
 bot_retorno+="$LINE\n"
 bot_retorno+="  ⚠️ Script Admin Vps ⚠️ \n   🚫 Sin TU RESELLER EN LA KEY 🚫\n"
@@ -35,7 +33,6 @@ bot_retorno+="apt update -y; apt upgrade -y; wget https://raw.githubusercontent.
 bot_retorno+="$LINE\n"
 bot_retorno+=" 🧬 Soporte : Ubuntu 14.04 - 16.04 - 18.04 - 20.04\n     SO Recomendado: Ubuntu 18.04 \n  🪦 Solicita Creditos de tu KEY 🛡️⚔️\n"
 bot_retorno+=" 🔐 『 $numkey_used 』keys Usadas 🔓,『 $numkey_gen 』keys Generadas 🗝️ \n"
-
 bot_retorno+="$LINE\n"
 msj_fun
 echo -e $bot_retorno >> ${keytxt}/key_${chatuser}.txt
