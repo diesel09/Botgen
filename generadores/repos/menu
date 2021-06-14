@@ -1,11 +1,11 @@
 #!/bin/bash
 
 menu_src () {
-bot_retorno="=========COMANDOS=========\n"
+bot_retorno="=========INICIO=========\n"
 	 if [[ $(echo $permited|grep "${chatuser}") = "" ]]; then
 		 if [[ $(cat ${CID}|grep "${chatuser}") = "" ]]; then
 			 bot_retorno+="$LINE\n"
-			 bot_retorno+="  ⚠️ BIENVENIDO - SCRIPT ADMIN VPS ⚠️ \n  🚫 No tiene acceso al generador 🚫"
+			 bot_retorno+="  ⚠️ BIENVENIDO - SCRIPT ADMIN VPS ⚠️ \n  🚫 No tiene acceso al generador 🚫 \n"
 			 bot_retorno+="$LINE\n"
 			 bot_retorno+="/ID    | Muestra sus ID |\n"
 			 bot_retorno+="/menu  | MENU DE COMANDOS |\n"
