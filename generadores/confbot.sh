@@ -26,6 +26,7 @@ function_verify () {
   ### INTALAR VERCION DE SCRIPT
   v1=$(curl -sSL "https://raw.githubusercontent.com/diesel09/genmx8.3/master/GENERADOR-VPS-MX/Install/Vercion")
   echo "$v1" > /etc/ADM-db/vercion
+  echo "@FelipeCouoh" > ${CIDdir}/resell
   }
 }
 
