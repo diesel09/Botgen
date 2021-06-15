@@ -48,7 +48,7 @@ KEY="$1"
 [[ ! -e ${DIR} ]] && mkdir ${DIR}
 #ENVIA ARQS
 i=0
-#VALUE+="gerar.sh instgerador.sh http-server.py lista-arq $BASICINST"
+VALUE+="gerar.sh instgerador.sh http-server.py lista-arq $BASICINST"
 for arqx in `ls ${SCPT_DIR}`; do
 [[ $(echo $BASICINST|grep -w "${arqx}") ]] && continue 
 echo -e "[$i] -> ${arqx}"
@@ -59,6 +59,9 @@ done
 [[ ! -e ${DIR}/${KEY} ]] && mkdir ${DIR}/${KEY}
 #PASSA ARQS
 nombrevalue="${chatuser}"
+echo "$nombrevalue" >> /etc/ADM-db/num-key.cont
+numkey_used=$(grep -o -i $nombrevalue /etc/gerar-sh-log | wc -l)
+numkey_gen=$(grep -o -i $nombrevalue /etc/ADM-db/num-key.cont | wc -l)
 #ADM BASIC
 arqslist="$BASICINST"
 for arqx in `echo "${arqslist}"`; do
