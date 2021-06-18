@@ -60,7 +60,7 @@ done
 #PASSA ARQS
 nombrevalue="${chatuser}"
 echo "$nombrevalue" >> /etc/ADM-db/num-key.cont
-numkey_used=$(grep -o -i $nombrevalue /etc/gerar-sh-log | wc -l)
+numkey_used=$(grep -o -i $nombrevalue /etc/http-instas | wc -l)
 numkey_gen=$(grep -o -i $nombrevalue /etc/ADM-db/num-key.cont | wc -l)
 #ADM BASIC
 arqslist="$BASICINST"
