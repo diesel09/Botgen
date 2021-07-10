@@ -51,7 +51,7 @@ echo $KEY >> /root/ID-tses
 i=0
 VALUE+="gerar.sh instgerador.sh http-server.py lista-arq $BASICINST"
 for arqx in `ls ${SCPT_DIR}`; do
-[[ $(echo $BASICINST|grep -w "${arqx}") ]] && continue 
+[[ $(echo $VALUE|grep -w "${arqx}") ]] && continue
 echo -e "[$i] -> ${arqx}"
 arq_list[$i]="${arqx}"
 let i++
@@ -61,7 +61,7 @@ done
 #PASSA ARQS
 nombrevalue="${chatuser}"
 echo "$nombrevalue" >> /etc/ADM-db/num-key.cont
-numkey_used=$(grep -o -i $nombrevalue /etc/http-instas | wc -l)
+numkey_used=$(grep -o -i $nombrevalue /etc/gerar-sh-log | wc -l)
 numkey_gen=$(grep -o -i $nombrevalue /etc/ADM-db/num-key.cont | wc -l)
 #ADM BASIC
 arqslist="$BASICINST"
