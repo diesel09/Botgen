@@ -147,12 +147,11 @@ read foo
 bot_gen
 }
 function_verify
-update () {
-CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
-[[ ! -e "${CIDdir}/confbot.sh" ]] && wget -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/diesel09/Botgen/master/generadores/confbot.sh &> /dev/null && chmod +x ${CIDdir}/confbot.sh
-sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
-source ${CIDdir}/confbot.sh
-bot_conf
+bot_conf () {
+check_ip
+
+instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
+bot_gen
 }
 ini_res () {
 clear
@@ -193,7 +192,7 @@ case $opcion in
 2) start_bot;;
 3) ini_id;;
 4) ayuda_fun;;
-5) update;;
+5) bot_conf;;
 6) ini_res;;
 *) bot_gen;;
 esac
